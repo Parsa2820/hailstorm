@@ -34,7 +34,7 @@ val project = Project(
       "io.jvm.uuid" %% "scala-uuid" % "0.2.4",
       "org.rogach" %% "scallop" % "3.1.5",
       "net.smacke" % "jaydio" % "0.1",
-      "com.github.serceman" % "jnr-fuse" % "0.5.4"),
+      "com.github.serceman" % "jnr-fuse" % "0.5.5"),
     javaOptions in run ++= Seq(
       "-Xms8g", "-Xmx32g", "-XX:+UseG1GC", "-Daeron.term.buffer.length=2097152"),
     Keys.fork in run := true,

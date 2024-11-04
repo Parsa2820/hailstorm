@@ -124,7 +124,10 @@ object HailstormFS {
         case Platform.OS.DARWIN =>
           fuseOpts = fuseOpts ++ Seq(s"-oiosize=${Chunk.dataSize}")
         case _ =>
-          fuseOpts = fuseOpts ++ Seq("-ononempty", "-obig_writes", s"-omax_read=${Chunk.dataSize}", s"-omax_write=${Chunk.dataSize}")
+          fuseOpts = fuseOpts ++ Seq("-obig_writes", s"-omax_read=${Chunk.dataSize}", s"-omax_write=${Chunk.dataSize}")
+          // TODO: Check if the directory is empty manually
+          //       Since the option is removed in newer version of fuse 
+          // fuseOpts = fuseOpts ++ Seq("-ononempty", "-obig_writes", s"-omax_read=${Chunk.dataSize}", s"-omax_write=${Chunk.dataSize}")
       }
       fuseOpts = fuseOpts ++ cliArguments.fuseOpts().map("-o" + _)
       log.info(s"Mounting HailstormFS to path $path with options $fuseOpts")
