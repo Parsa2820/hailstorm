@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.10)
+
+# Project name
+project(ROCKSDB_BENCH)
+
+# Set C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Add executable
+add_executable(compation_trace compation_trace.cpp)
+
+# Include RocksDB headers
+include_directories(/home/parsam/rocksdb/include/rocksdb)
+
+# Link RocksDB library
+target_link_libraries(iterative_compaction
+    /home/parsam/rocksdb/librocksdb.so
+    pthread
+    dl
+)
